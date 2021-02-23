@@ -9,3 +9,18 @@ ja:
       image: 画像
       skill: スキル
       job: 求める仕事
+  activerecord:
+    attributes:
+      post:
+        title: タイトル
+        tag: タグ
+        content: 内容
+        image: 画像
+
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'
