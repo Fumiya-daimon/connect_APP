@@ -23,7 +23,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment =
   end
 
   def edit
@@ -43,7 +42,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :tag, :content, :image)
+    params.require(:post).permit(:title, :tag, :content, :image).merge(user_id: current_user.id)
   end
 
   def set_target_post

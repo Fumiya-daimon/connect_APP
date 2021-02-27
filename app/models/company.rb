@@ -1,38 +1,28 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: companies
 #
 #  id                     :bigint           not null, primary key
 #  email                  :string(191)      default(""), not null
 #  encrypted_password     :string(191)      default(""), not null
 #  image                  :string(191)
-#  job                    :string(191)      not null
+#  industry               :string(191)
+#  name                   :string(191)
 #  remember_created_at    :datetime
+#  required_person        :string(191)
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(191)
-#  skill                  :string(191)      not null
-#  username               :string(191)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
 # Indexes
 #
-#  index_users_on_email                 (email) UNIQUE
-#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_companies_on_email                 (email) UNIQUE
+#  index_companies_on_reset_password_token  (reset_password_token) UNIQUE
 #
-class User < ApplicationRecord
+class Company < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :comments
-  has_many :posts, dependent: :destroy
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :image, {presence: true}
-  validates :job, {presence: true, length: {maximum: 30}}
-  validates :skill, {presence: true, length: {maximum: 20}}
-
-  def posts
-    return Post.where(user_id: self.id)
-  end
 end

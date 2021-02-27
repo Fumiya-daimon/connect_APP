@@ -315,4 +315,6 @@ Devise.setup do |config|
 
   # timeout setting
   config.timeout_in = 3.minutes
+
+  config.scoped_views = true
 end
