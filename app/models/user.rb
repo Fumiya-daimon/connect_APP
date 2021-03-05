@@ -30,9 +30,6 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :image, {presence: true}
-  validates :job, {presence: true, length: {maximum: 30}}
-  validates :skill, {presence: true, length: {maximum: 20}}
 
   def posts
     return Post.where(user_id: self.id)
