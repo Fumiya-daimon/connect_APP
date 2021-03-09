@@ -1,8 +1,8 @@
-<h1>DMサンプルアプリ</h1>
+<h1>ユーザー一覧</h1>
   <% if user_signed_in? %>
-  <h2>Hello <%= current_user.email %></h2>
+  <h2>こんにちは <%= current_user.username %>さん</h2>
   <% @users.each do |u| %>
-  <p><a href="/users/<%= u.id %>"><%= u.email %>さん</a></p>
+  <p><a href="/users/<%= u.id %>"><%= u.username %>さん</a></p>
   <hr>
   <% end %>
   <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>

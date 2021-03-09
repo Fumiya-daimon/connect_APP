@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  get 'companies/show'
   devise_for :companies
   devise_for :users
 
   resources :users, only: [:index, :show]
+  resources :companies, only: [:index, :show]
   resources :posts
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]

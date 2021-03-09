@@ -1,0 +1,13 @@
+<h1>企業一覧</h1>
+  <% if company_signed_in? %>
+  <h2>こんにちは <%= current_company.name %>さん</h2>
+  <% @companies.each do |c| %>
+  <p><a href="/companies/<%= c.id %>"><%= c.name %>さん</a></p>
+  <hr>
+  <% end %>
+  <%= link_to "ログアウト", destroy_company_session_path, :method => :delete %>
+<% else %>
+  <%= link_to "企業を登録する", new_company_registration_path %>
+  <br>
+  <%= link_to "ログインする", new_company_session_path %>
+<% end %>
