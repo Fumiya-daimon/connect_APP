@@ -25,4 +25,11 @@ class Company < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, length: { minimum: 7 }
+  validates :industry, presence: true
+  validates :required_person, presence: true
+
 end

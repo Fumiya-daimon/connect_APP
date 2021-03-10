@@ -17,8 +17,13 @@ class ApplicationController < ActionController::Base
 
   protected
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :skill, :image, :job])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:username, :skill, :image, :job])
+      if resource_class == User
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :skill, :image, :job])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:username, :skill, :image, :job])
+      elsif resource_class == Company
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image, :industry, :required_person])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image, :industry, :required_person])
+      end
     end
 
     config.time_zone = 'Tokyo'
