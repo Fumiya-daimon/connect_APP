@@ -1,0 +1,2 @@
+module CompanyrequiredPostsHelper
+end

@@ -19,6 +19,7 @@
             <%= link_to '新規投稿', new_post_path %>
             <%= link_to '投稿一覧', posts_path %>
             <%= link_to 'ユーザー一覧', users_path %>
+            <%= link_to '求人一覧', companyrequired_posts_path %>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
           <% elsif company_signed_in? %>
             <strong>
@@ -27,6 +28,7 @@
             <%= link_to 'ユーザー投稿一覧', posts_path %>
             <%= link_to '企業投稿一覧', company_posts_path %>
             <%= link_to '新規投稿', new_company_post_path %>
+            <%= link_to '求人投稿', new_companyrequired_post_path %>
             <%= link_to 'ユーザー一覧', users_path %>
             <%= link_to 'ログアウト', destroy_company_session_path, method: :delete %>
           <% else %>

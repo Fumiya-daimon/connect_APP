@@ -1,0 +1,20 @@
+<div class="d-flex align-items-center mt-4 mb-4">
+  <div class="ml-auto boards__linkBox">
+    <%= link_to '一覧', companyrequired_posts_path, class: 'btn btn-outline-dark' %>
+    <%= link_to '編集', edit_companyrequired_post_path(@companyrequired_post), class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+
+<% if flash[:notice] %>
+  <div class="alert alert-primary"><%= flash[:notice] %></div>
+<% end %>
+
+<div class="card">
+  <div class="card-header">
+    <h4><%= @companyrequired_post.title %></h4>
+  </div>
+
+  <div class="card-body">
+    <p class="card-text"><%= simple_format(@companyrequired_post.content) %></p>
+  </div>
+</div>

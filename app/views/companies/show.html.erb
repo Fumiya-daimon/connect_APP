@@ -7,5 +7,9 @@
 <% end %>
 
 <h2>求人一覧</h2>
-
+<% @company.companyrequired_posts.each do |post| %>
+  <%= link_to(post.title, post) %></br>
+  <%= link_to(post.required_person, post) %></br>
+  <%= link_to(post.content, post) %></br>
+<% end %>
 <%= link_to "企業一覧に戻る", companies_path %>
