@@ -1,5 +1,11 @@
 <h1>こんにちは、<%= current_company.name %>さん</h1>
-<p>企業用ページです。</p>
 <p>MyPage</p>
+<p>投稿一覧</p>
+<% @company.company_posts.each do |post| %>
+  <%= link_to(post.title, post) %></br>
+  <%= link_to(post.content, post) %></br>
+<% end %>
+
+<h2>求人一覧</h2>
 
 <%= link_to "企業一覧に戻る", companies_path %>

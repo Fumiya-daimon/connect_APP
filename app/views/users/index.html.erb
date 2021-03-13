@@ -4,6 +4,7 @@
     <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
   <% end %>
   <% @users.each do |u| %>
+    <%= u.image.to_s %>
     <p><a href="/users/<%= u.id %>"><%= u.username %>さん</a></p>
     <hr>
   <% end %>

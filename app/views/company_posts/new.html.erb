@@ -1,0 +1,12 @@
+<div class="d-flex align-items-center">
+  <h1>掲示板作成</h1>
+  <div class="ml-auto boards__linkBox">
+    <%= link_to '一覧', company_posts_path, class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+
+<% if flash[:notice] %>
+  <div class="alert alert-primary"><%= flash[:notice] %></div>
+<% end %>
+
+<%= render partial: "form", locals: { company_post: @company_post } %>

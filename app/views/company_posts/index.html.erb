@@ -1,0 +1,33 @@
+<div class="d-flex align-items-center">
+  <h1>掲示板一覧</h1>
+  <div class="ml-auto boards__linkBox">
+  <%= link_to '新規作成', new_company_post_path, class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+<% if flash[:notice] %>
+  <div class="alert alert-danger"><%= flash[:notice] %></div>
+<% end %>
+<table class="table table-hover boards__table">
+  <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th>作成日時</th>
+      <th>更新日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @company_posts.each do |post| %>
+      <tr>
+        <td><%= post.id %></th>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td><%= post.created_at.to_s(:datetime_jp) %></td>
+        <td><%= post.updated_at.to_s(:datetime_jp) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @company_posts %>

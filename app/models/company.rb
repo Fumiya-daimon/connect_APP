@@ -23,6 +23,7 @@
 class Company < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :company_post, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -32,4 +33,7 @@ class Company < ApplicationRecord
   validates :industry, presence: true
   validates :required_person, presence: true
 
+  def company_posts
+    return CompanyPost.where(company_id: self.id)
+  end
 end
