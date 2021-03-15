@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_060002) do
+ActiveRecord::Schema.define(version: 2021_03_14_023100) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -49,14 +49,12 @@ ActiveRecord::Schema.define(version: 2021_03_13_060002) do
 
   create_table "companyrequired_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "company_id", null: false
-    t.bigint "company_post_id", null: false
     t.string "title"
     t.string "required_person"
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_companyrequired_posts_on_company_id"
-    t.index ["company_post_id"], name: "index_companyrequired_posts_on_company_post_id"
   end
 
   create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -113,7 +111,6 @@ ActiveRecord::Schema.define(version: 2021_03_13_060002) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "companyrequired_posts", "companies"
-  add_foreign_key "companyrequired_posts", "company_posts"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
   add_foreign_key "messages", "rooms"
