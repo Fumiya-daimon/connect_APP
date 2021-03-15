@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'companyrooms/show'
   get 'companies/show'
   devise_for :companies
   devise_for :users
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   resources :rooms, only: [:create, :show, :index]
   resources :company_posts
   resources :companyrequired_posts
+  resources :companyrooms, only: [:show, :create]
+  resources :companymessages, only: [:create]
   root 'posts#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -25,6 +25,7 @@ class Company < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :company_post, dependent: :destroy
   has_many :companyrequired_post, dependent: :destroy
+  has_many :companyrooms
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
