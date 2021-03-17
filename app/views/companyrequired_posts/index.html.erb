@@ -11,6 +11,7 @@
   <thead class="thead-dark">
     <tr>
       <th>ID</th>
+      <th>会社名</th>
       <th>タイトル</th>
       <th>求める人物像</th>
       <th>内容</th>
@@ -22,6 +23,7 @@
     <% @companyrequired_posts.each do |post| %>
       <tr>
         <td><%= post.id %></th>
+        <td><%= post.company.name %></th>
         <td><%= post.title %></td>
         <td><%= post.required_person %></td>
         <td><%= post.content %></td>
