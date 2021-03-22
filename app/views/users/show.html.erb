@@ -1,14 +1,15 @@
-<h1>こんにちは、<%= current_user.username %>さん</h1>
+<% if user_signed_in? %>
+  <h1>こんにちは、<%= current_user.username %>さん</h1>
   <strong>Image:</strong>
   <% if @user.image? %>
     <div class="thumbnail">
-      <%= image_tag @user.image.url %>
+    <%= image_tag @user.image.url %>
     </div>
   <% end %>
-<p>MyPage</p>
-<p>投稿一覧</p>
-<table class="table table-hover boards__table">
-  <thead class="thead-dark">
+  <p>MyPage</p>
+  <p>投稿一覧</p>
+  <table class="table table-hover boards__table">
+    <thead class="thead-dark">
     <tr>
       <th>タイトル</th>
       <th>内容</th>
@@ -24,9 +25,8 @@
     </tr>
   <% end %>
   </tbody>
-</table>
+  </table>
 
-<%if user_signed_in? %>
   <% unless @user.id == current_user.id %>
     <% if @isRoom == true %>
       <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
@@ -39,14 +39,16 @@
       <% end %>
     <% end %>
   <% end %>
-<% elsif company_signed_in? %>
-  <% if @user_ids.include?(user.id) %>
+
+  <% elsif company_signed_in? %>
+    <% if @user_ids.include?(@user.id) %>
     <br>
-    <%= link_to "チャットへ", room_path(current_shop.rooms.find_by(user_id: user.id)) %><br>
+    <%= link_to "チャットへ", companyroom_path(current_company.companyrooms.find_by(user_id: @user.id)) %><br>
   <% else %>
-    <%= form_for Room.new do |f| %>
-    <%= f.hidden_field :user_id, :value => user.id %>
-    <%= f.submit %>
+      <%= form_for Companyroom.new do |f| %>
+      <%= f.hidden_field :user_id, :value => @user.id %>
+      <%= f.submit "チャット作成" %>
     <% end %>
   <% end %>
+  <br>
 <% end %>

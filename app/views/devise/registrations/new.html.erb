@@ -32,13 +32,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :skill %><br />
-    <%= f.text_field :skill %>
+    <%= f.label :skill %><br>
+    <%= f.select(:skill, ["主体性", "課題解決能力","客観性","計画力","想像力","傾聴力"], {include_blank: '選択ボックス'}) %>
   </div>
 
   <div class="field">
-    <%= f.label :job %><br />
-    <%= f.text_field :job %>
+    <%= f.label :job %><br>
+    <%= f.select(:job, ["自動車", "航空","建設機械","工作機械","ロボット","プラント・エンジニアリング","鉄道","電子部品","半導体","総合電機","パソコン","IT","インフラ","銀行","保険","証券","クレジットカード","食品","医薬品","ゲーム","旅行","エンタメ","広告","建設","不動産","商社","教育","飲食"], {include_blank: '選択ボックス'}) %>
   </div>
 
   <div class="actions">

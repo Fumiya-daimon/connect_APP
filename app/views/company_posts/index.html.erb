@@ -16,6 +16,8 @@
       <th>内容</th>
       <th>作成日時</th>
       <th>更新日時</th>
+      <th>詳細</th>
+      <th>削除</th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +29,10 @@
         <td><%= post.content %></td>
         <td><%= post.created_at.to_s(:datetime_jp) %></td>
         <td><%= post.updated_at.to_s(:datetime_jp) %></td>
+        <% if company_signed_in? && current_company.id == post.company_id %>
+          <td><%= link_to '詳細', post, class: 'btn btn-outline-dark' %></td>
+          <td><%= link_to '削除', post, class: 'btn btn-outline-dark', method: :delete %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

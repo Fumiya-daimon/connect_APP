@@ -2,6 +2,9 @@
   <% if user_signed_in? %>
     <h2>こんにちは <%= current_user.username %>さん</h2>
     <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+    <% elsif company_signed_in? %>
+    <h2>こんにちは <%= current_company.name %>さん</h2>
+    <%= link_to "ログアウト", destroy_company_session_path, :method => :delete %>
   <% end %>
   <% @users.each do |u| %>
     <%= u.image.to_s %>
