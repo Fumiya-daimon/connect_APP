@@ -23,6 +23,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @answers = @post.answers
+    @answer = Answer.new
   end
 
   def edit

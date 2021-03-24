@@ -1,0 +1,46 @@
+ja:
+  activerecord:
+    models:
+      # view側： User.model_name.human => "ユーザ" / t("activerecord.models.user")と同じ
+      user: ユーザー
+      post: 掲示板
+    # model毎に定義したいattributesを記述
+    attributes:
+        user:
+          id: ID
+          # view側： User.human_attribute_name :name => "名前" /　t("activerecord.attributes.user.name")と同じ
+          username: 名前
+          email: メールアドレス
+          password: パスワード
+          editpassword: 変更するパスワード
+          current_password: 現在のパスワード
+          password_confirmation: パスワード確認
+          remember_me: パスワードを保存する
+          login: ログイン
+          skill: スキル
+          job: 業界
+          image: 画像
+          crypted_password: パスワード
+        post:
+          id: ID
+          title: タイトル
+          tag: タグ
+          content: 内容
+          image: 画像
+        company:
+          email: メールアドレス
+          password: パスワード
+          editpassword: 変更するパスワード
+          confirmpassword: パスワード確認
+          current_password: 現在のパスワード
+          companyname: 企業名
+          image: 画像
+          industry: 業界
+          required_person: 求める人物像
+
+
+
+  # 全てのmodelで共通して使用するattributesを定義
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
