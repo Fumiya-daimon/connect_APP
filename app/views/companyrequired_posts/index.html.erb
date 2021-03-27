@@ -1,7 +1,9 @@
 <div class="d-flex align-items-center">
-  <h1>掲示板一覧</h1>
+  <h1>求人一覧</h1>
   <div class="ml-auto boards__linkBox">
-  <%= link_to '新規作成', new_companyrequired_post_path, class: 'btn btn-outline-dark' %>
+  <% if company_signed_in? %>
+    <%= link_to '新規作成', new_companyrequired_post_path, class: 'btn btn-outline-dark' %>
+  <% end %>
   </div>
 </div>
 <% if flash[:notice] %>
@@ -17,6 +19,7 @@
       <th>内容</th>
       <th>作成日時</th>
       <th>更新日時</th>
+      <th>応募</th>
     </tr>
   </thead>
   <tbody>
@@ -29,6 +32,7 @@
         <td><%= post.content %></td>
         <td><%= post.created_at.to_s(:datetime_jp) %></td>
         <td><%= post.updated_at.to_s(:datetime_jp) %></td>
+
       </tr>
     <% end %>
   </tbody>

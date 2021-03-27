@@ -1,9 +1,32 @@
 @import "bootstrap";
+@import "answers";
+@import "users";
+@import "posts";
+@import "companies";
+@import "company_posts";
+@import "companymessages";
+@import "companyrequired_posts";
+@import "home";
+@import "companies";
+@import "messages";
+
 
 .left-message{
   text-align: left;
+  padding: 20px;
 }
 
 .right-message{
   text-align: right;
+}
+
+header {
+  background-color: tan;
+  font-family: 'Sawarabi Gothic', sans-serif;
+
+}
+
+.title-tag {
+  padding: 10px;
+  letter-spacing: 3px;
 }

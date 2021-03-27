@@ -26,7 +26,7 @@ class Company < ApplicationRecord
   has_many :company_post, dependent: :destroy
   has_many :companyrequired_post, dependent: :destroy
   has_many :companyrooms
-  has_many :answers
+  has_many :answers, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

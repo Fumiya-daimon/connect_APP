@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<h2>コメント一覧</h2>
+<h2 class="comment">コメント一覧</h2>
 <% @answers.each do |a| %>
   <div>
     <%= a.company.name %>
@@ -34,6 +34,7 @@
 
 <% if company_signed_in? %>
   <%= form_for [@post, @answer] do |f| %>
+    <%= hidden_field :company_id, :value => current_company.id  %>
     <div class="form-group">
       <%= f.label :title, 'タイトル' %>
       <%= f.text_field :title %>

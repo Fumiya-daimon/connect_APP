@@ -1,13 +1,32 @@
 <h1>ユーザー一覧</h1>
   <% if user_signed_in? %>
     <h2>こんにちは <%= current_user.username %>さん</h2>
-    <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+    <%= link_to "ログアウト", destroy_user_session_path, class: "logout", method: :delete %>
     <% elsif company_signed_in? %>
     <h2>こんにちは <%= current_company.name %>さん</h2>
-    <%= link_to "ログアウト", destroy_company_session_path, :method => :delete %>
+    <%= link_to "ログアウト", destroy_company_session_path, class: "logout", method: :delete %>
   <% end %>
-  <% @users.each do |u| %>
-    <%= u.image.to_s %>
-    <p><a href="/users/<%= u.id %>"><%= u.username %>さん</a></p>
-    <hr>
-  <% end %>
+  <table class="table table-hover boards__table">
+    <thead class="thead-dark">
+      <tr>
+        <th>ユーザー名</th>
+        <th>能力</th>
+        <th>業界</th>
+        <th>詳細</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |u| %>
+        <tr>
+          <td><a href="/users/<%= u.id %>"><%= u.username %>さん</a></th>
+          <td><%= u.skill %></th>
+          <td><%= u.job %></td>
+          <%# <td><%= link_to '詳細', user_path, class: 'btn btn-outline-dark' %></td>
+          <%#　<% if user_signed_in? && current_user.id == post.user_id %>
+            <%#　<td><%= link_to '削除', post, class: 'btn btn-outline-dark', method: :delete %></td>
+          <%#　<% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
