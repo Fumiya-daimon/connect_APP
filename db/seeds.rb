@@ -7,6 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env == 'development'
   (1..50).each do |i|
-    Post.create(title:"タイトル#{i}", tag:"タグ#{i}" ,content:"本文#{i}", image:"画像#{i}")
+    Post.create(title:"タイトル#{i}",content:"本文#{i}" )
   end
+
+  Tag.create([
+    { name: "業界"},
+    { name: "福利厚生"},
+    { name: "やりがい"},
+    { name: "求める人物像"},
+    { name: "キャリアプラン"}
+  ])
 end

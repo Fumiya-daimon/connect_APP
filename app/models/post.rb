@@ -13,10 +13,11 @@
 #
 class Post < ApplicationRecord
   has_many :answers, dependent: :destroy
+  has_many :post_tag_relations, dependent: :delete_all
+  has_many :tags, through: :post_tag_relations
   belongs_to :user
 
   validates :title, presence: true, length: { maximum: 20 }
-  validates :tag, presence: true, length: { maximum: 10 }
   validates :content, presence: true, length: { maximum: 1000 }
 
   def user

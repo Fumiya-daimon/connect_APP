@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_135438) do
+ActiveRecord::Schema.define(version: 2021_03_27_051931) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "content"
@@ -114,6 +114,15 @@ ActiveRecord::Schema.define(version: 2021_03_23_135438) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "post_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_tag_relations_on_post_id"
+    t.index ["tag_id"], name: "index_post_tag_relations_on_tag_id"
+  end
+
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
     t.string "tag"
@@ -126,6 +135,12 @@ ActiveRecord::Schema.define(version: 2021_03_23_135438) do
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -160,4 +175,6 @@ ActiveRecord::Schema.define(version: 2021_03_23_135438) do
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "post_tag_relations", "posts"
+  add_foreign_key "post_tag_relations", "tags"
 end

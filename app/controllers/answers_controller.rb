@@ -1,8 +1,8 @@
 class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
+    @answer.post_id = params[:post_id]
     @answer.company_id = current_company.id
-    @answer.post_id = Post.find_by(id: params[:post_id])
     if @answer.save
       redirect_back(fallback_location: root_path)
     else
@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
 
   private
   def answer_params
-    params.require(:answer).permit(:title, :content)
+    params.require(:answer).permit(:title, :content, :post_id)
   end
 
 end
