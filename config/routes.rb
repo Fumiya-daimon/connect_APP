@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :companies, only: [:index, :show]
   resources :posts do
     resources :answers, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
   end
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]

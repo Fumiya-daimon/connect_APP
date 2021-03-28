@@ -26,9 +26,15 @@ class PostsController < ApplicationController
   def show
     @answers = @post.answers
     @answer = Answer.new
+    @like = Like.new
   end
 
   def edit
+    if @post.user_id == current_user.id
+      render "edit"
+    else
+      redirect_to posts_path
+    end
   end
 
   def update
