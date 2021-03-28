@@ -6,13 +6,26 @@
     <h2>こんにちは <%= current_company.name %>さん</h2>
     <%= link_to "ログアウト", destroy_company_session_path, class: "logout", method: :delete %>
   <% end %>
+  <%= search_form_for @q do |f| %>
+
+    <%= f.label :username %>
+    <%= f.search_field :username_cont %>
+    <br/>
+    <%= f.label :skill %>
+    <%= f.select(:skill, ["主体性", "課題解決能力","客観性","計画力","想像力","傾聴力"], {include_blank: '選択ボックス'}) %>
+    <br/>
+    <%= f.label :job %>
+    <%= f.select(:job, ["自動車", "航空","建設機械","工作機械","ロボット","プラント・エンジニアリング","鉄道","電子部品","半導体","総合電機","パソコン","IT","インフラ","銀行","保険","証券","クレジットカード","食品","医薬品","ゲーム","旅行","エンタメ","広告","建設","不動産","商社","教育","飲食"], {include_blank: '選択ボックス'}) %>
+　  <br/>
+    <%= f.submit "検索" %>
+  <% end %>
   <table class="table table-hover boards__table">
     <thead class="thead-dark">
       <tr>
         <th>ユーザー名</th>
         <th>能力</th>
         <th>業界</th>
-        <th>詳細</th>
+        <th>編集</th>
         <th>削除</th>
       </tr>
     </thead>
@@ -22,10 +35,10 @@
           <td><a href="/users/<%= u.id %>"><%= u.username %>さん</a></th>
           <td><%= u.skill %></th>
           <td><%= u.job %></td>
-          <%# <td><%= link_to '詳細', user_path, class: 'btn btn-outline-dark' %></td>
-          <%#　<% if user_signed_in? && current_user.id == post.user_id %>
-            <%#　<td><%= link_to '削除', post, class: 'btn btn-outline-dark', method: :delete %></td>
-          <%#　<% end %>
+          <%# <% if user_signed_in? && current_user.id %>
+          <%#<td><%= link_to '編集', edit_post_path(@post), class: 'btn btn-outline-dark' %></td>
+          <%#<td><%= link_to '削除', post_path, class: 'btn btn-outline-dark', method: :delete %></td>
+          <%#<% end %>
         </tr>
       <% end %>
     </tbody>
