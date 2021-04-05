@@ -1,7 +1,7 @@
 <% if company_signed_in? %>
   <h1>こんにちは、<%= current_company.name %>さん</h1>
   <p>MyPage</p>
-  <p>投稿一覧</p>
+  <h2>投稿一覧</h2>
   <table class="table table-hover boards__table">
     <thead class="thead-dark">
       <tr>
@@ -41,10 +41,27 @@
   </table>
 
   <% elsif user_signed_in? %>
+    <p>投稿一覧</p>
+    <table class="table table-hover boards__table">
+      <thead class="thead-dark">
+        <tr>
+          <th>タイトル</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @company.company_posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.content %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
     <% if @company_ids.include?(@company.id) %>
-    <br>
-    <%= link_to "チャットへ", companyroom_path(current_company.companyrooms.find_by(user_id: @user.id)) %><br>
-  <% else %>
+      <br>
+      <%= link_to "チャットへ", companyroom_path(@company.companyrooms.find_by(user_id: @user.id)) %><br>
+    <% else %>
       <%= form_for Companyroom.new do |f| %>
       <%= f.hidden_field :company_id, :value => @company.id %>
       <%= f.submit "チャット作成" %>

@@ -12,24 +12,25 @@
   </head>
 
   <body>
-  <header>
+    <header>
       <nav>
-          <% if user_signed_in? %>
-            <div class="title-tag">
-            <strong>
-              <%= link_to 'connect', root_path %>
-              <%= link_to 'マイページ', user_path(current_user.id) %></strong>
-              <%= link_to 'プロフィール変更', edit_user_registration_path %>
-              <%= link_to '新規投稿', new_post_path %>
-              <%= link_to '投稿一覧', posts_path %>
-              <%= link_to 'ユーザー一覧', users_path %>
-              <%= link_to '企業一覧', companies_path %>
-              <%= link_to '求人一覧', companyrequired_posts_path %>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-            </div>
-          <% elsif company_signed_in? %>
+        <% if user_signed_in? %>
           <div class="title-tag">
-            <strong>
+          <strong>
+            <%= link_to 'connect', root_path %>
+            <%= link_to 'マイページ', user_path(current_user.id) %>
+          </strong>
+            <%= link_to 'プロフィール変更', edit_user_registration_path %>
+            <%= link_to '新規投稿', new_post_path %>
+            <%= link_to '投稿一覧', posts_path %>
+            <%= link_to 'ユーザー一覧', users_path %>
+            <%= link_to '企業一覧', companies_path %>
+            <%= link_to '求人一覧', companyrequired_posts_path %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          </div>
+        <% elsif company_signed_in? %>
+          <div class="title-tag">
+          <strong>
             <%= link_to 'connect', root_path %>
             <%= link_to '企業マイページ', company_path(current_company.id) %></strong>
             <%= link_to 'プロフィール変更', edit_company_registration_path %>
@@ -40,8 +41,8 @@
             <%= link_to 'ユーザー一覧', users_path %>
             <%= link_to '企業一覧', companies_path %>
             <%= link_to 'ログアウト', destroy_company_session_path, method: :delete %>
-            </div>
-          <% else %>
+          </div>
+        <% else %>
           <div class="title-tag">
             <%= link_to 'connect', root_path %>
             <%= link_to '新規登録', new_user_registration_path %>
@@ -49,14 +50,14 @@
             <%= link_to '投稿一覧', posts_path %>
             <%= link_to 'ユーザー一覧', users_path %>
             <%= link_to '企業様はこちらから', new_company_session_path %>
-          <% end %>
           </div>
+        <% end %>
       </nav>
     </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="container">
-      <%= yield %>
-    </div>
+    <div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>
+    <%= yield %>
+    <footer>ConnectApp</footer>
+    <%= javascript_pack_tag "hello_vue" %>
   </body>
 </html>

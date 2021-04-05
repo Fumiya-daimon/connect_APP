@@ -11,6 +11,10 @@
 @import "messages";
 
 
+body {
+  display: flex;
+  flex-direction: column;
+}
 .left-message{
   text-align: left;
   padding: 20px;
@@ -21,12 +25,36 @@
 }
 
 header {
-  background-color: tan;
+  background-color: black;
   font-family: 'Sawarabi Gothic', sans-serif;
-
+  height: 70px;
+  padding: 0px 60px;
+  position: fixed;
+  width: 100%;
 }
 
+a {
+  color: white;
+  font-family: 'Philosopher', serif;
+}
 .title-tag {
   padding: 10px;
   letter-spacing: 3px;
+}
+
+footer {
+  padding: 10px 15px;
+  text-align: center;
+  line-height: 1.57;
+  letter-spacing: 0.15em;
+  font-size: 16px;
+  color: white;
+  background-color: black;
+  font-family: 'Philosopher', serif;
+}
+
+.container {
+  margin: 0 auto;
+  padding-top: 50px;
+  text-align: center;
 }

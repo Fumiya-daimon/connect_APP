@@ -25,7 +25,7 @@ class CompanyroomsController < ApplicationController
     @messages = @room.companymessages #このルームのメッセージを全て取得
     if user_signed_in?
       if @room.user.id == current_user.id
-          @company = @room.company
+        @company = @room.company
       else
         redirect_to "/"
       end

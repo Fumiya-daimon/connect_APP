@@ -3,13 +3,13 @@
 </div>
 <h4 class="rooms-title">チャット</h4>
 <% @entries.each do |e| %>
- <div class=“user-name”>
- <strong>
+  <div class=“user-name”>
+  <strong>
     <a class="rooms-user-link" href="/users/<%= e.user.id %>">
     <%= e.user.username %>さん
-   </a>
- </strong>
- </div>
+    </a>
+  </strong>
+  </div>
 <% end %>
 <hr>
 <div class="chats">

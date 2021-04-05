@@ -1,13 +1,12 @@
 <% if user_signed_in? %>
   <h1>こんにちは、<%= current_user.username %>さん</h1>
-  <strong>Image:</strong>
   <% if @user.image? %>
     <div class="thumbnail">
     <%= image_tag @user.image.url %>
     </div>
   <% end %>
-  <p>MyPage</p>
-  <p>投稿一覧</p>
+  <h2>MyPage</h2>
+  <h3>投稿一覧</h3>
   <table class="table table-hover boards__table">
     <thead class="thead-dark">
     <tr>

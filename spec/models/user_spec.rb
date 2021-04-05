@@ -21,27 +21,28 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  mount_uploader :image, ImageUploader
+require 'rails_helper'
 
-  has_many :posts, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :liked_posts, through: :likes, source: :post
-  has_many :messages, dependent: :destroy
-  has_many :entries, dependent: :destroy
-  has_many :companyrooms
-
-
-  devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable
-
-  def posts
-    return Post.where(user_id: self.id)
+RSpec.describe User, type: :model do
+  it "is valid with name, email, and password" do
+    user = User.new(
+      name: "user1",
+      email: "sample@example.com",
+      password: "8282",
+      skill: "主体性",
+      job: "建設機械",
+    )
+    expect(user). to be_valid
   end
-
-  def already_liked?(post)
-    self.likes.exists?(post_id: post.id)
+  it "is invalid without a name" do
+    user = User.new(name: nil)
+    user.valid?
+    expect(user.errors[:user]). to include('can`t be blank')
   end
+  it "is invalid without email address" do
+  user = User.new(email: nil)
+    user.valid?
+    expect(user.errors[:email]). to include('can`t be blank')
+  end
+  it "is invalid without password"
 end

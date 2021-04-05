@@ -15,12 +15,13 @@ ja:
           editpassword: 変更するパスワード
           current_password: 現在のパスワード
           password_confirmation: パスワード確認
-          remember_me: パスワードを保存する
+          remember_me: パスワードを記録する場合、チェックしてください。
           login: ログイン
           skill: スキル
           job: 業界
           image: 画像
           crypted_password: パスワード
+          birthday: 生年月日
         post:
           id: ID
           title: タイトル
@@ -37,6 +38,7 @@ ja:
           image: 画像
           industry: 業界
           required_person: 求める人物像
+          remember_me: パスワードを記録する場合、チェックしてください。
 
 
 

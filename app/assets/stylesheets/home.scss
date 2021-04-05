@@ -1,17 +1,42 @@
-.title {
-  color: red;
-  font-size: 30px;
-   }
-.jumbotron-extend {
-  position: relative;
-  height: 100vh;
-  min-height: 300px;
+.page-title {
+  color: green;
+  font-size: 50px;
+  }
+
+
+// .jumbotron-extend {
+//     position: relative;
+//     min-height: 300px;
+//   }
+
+// .container {
+//     max-width: 600px;
+//     margin: 60px auto;
+//     padding-left: 15px;
+//     padding-right: 15px;
+// }
+
+.main-container {
+  background-size: cover;
+  background-position: center top;
+  background-image: image-url("recuruit1.jpg");
+  background-repeat: no-repeat;
+  width: 100%;
 }
 
-
-.container {
-  max-width: 600px;
-  margin: 60px auto;
-  padding-left: 15px;
-  padding-right: 15px;
+.connect-center {
+  text-align: center;
+  margin-top: 25px;
+  h1 {
+    padding-top: 200px;
+    text-shadow: #fff 0 0 3px;
+  }
+  p {
+    font-size: 25px;
+    margin: 30px 0 42px;
+    color: white;
+  }
+  .btn:not(:disabled):not(.disabled) {
+    margin: 100px 150px;
+  }
 }
