@@ -1,58 +1,63 @@
-<% if user_signed_in? %>
-  <h1>こんにちは、<%= current_user.username %>さん</h1>
-  <% if @user.image? %>
-    <div class="thumbnail">
-    <%= image_tag @user.image.url %>
-    </div>
-  <% end %>
-  <h2>MyPage</h2>
-  <h3>投稿一覧</h3>
-  <table class="table table-hover boards__table">
-    <thead class="thead-dark">
-    <tr>
-      <th>タイトル</th>
-      <th>内容</th>
-      <th>画像</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @user.posts.each do |post| %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= post.content %></td>
-      <td><%= post.image %></td>
-    </tr>
-  <% end %>
-  <h3>いいねしている投稿</h3>
-  <% @user.liked_posts.each do |post| %>
-    <%= post.id %>
-    <%= post.content %>
-  <% end %>
-  </tbody>
-  </table>
-
-  <% unless @user.id == current_user.id %>
-    <% if @isRoom == true %>
-      <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+<div class="user-show-page">
+  <% if user_signed_in? %>
+    <h1 class="user-text">こんにちは、<%= current_user.username %>さん</h1>
+    <% if @user.image.url.nil? %>
+      <div class="default-img"></div>
     <% else %>
-      <%= form_for @room do |f| %>
-        <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, value: @user.id %>
+      <%= image_tag @user.image.url, class: "img" %>
+    <% end %>
+
+    <div class="profile-name mt-4">
+      <%= @user.username %>
+    </end>
+    <h3>投稿一覧</h3>
+    <table class="table table-hover boards__table">
+      <thead class="thead-dark">
+      <tr>
+        <th>タイトル</th>
+        <th>内容</th>
+        <th>画像</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @user.posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td><%= post.image %></td>
+      </tr>
+    <% end %>
+    <h3>いいねしている投稿</h3>
+    <% @user.liked_posts.each do |post| %>
+      <%= post.id %>
+      <%= post.content %>
+    <% end %>
+    </tbody>
+    </table>
+
+    <% unless @user.id == current_user.id %>
+      <% if @isRoom == true %>
+        <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, value: @user.id %>
+          <% end %>
+          <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
         <% end %>
-        <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
       <% end %>
     <% end %>
-  <% end %>
 
-  <% elsif company_signed_in? %>
-    <% if @user_ids.include?(@user.id) %>
-    <br>
-    <%= link_to "チャットへ", companyroom_path(current_company.companyrooms.find_by(user_id: @user.id)) %><br>
-  <% else %>
-      <%= form_for Companyroom.new do |f| %>
-      <%= f.hidden_field :user_id, :value => @user.id %>
-      <%= f.submit "チャット作成" %>
+    <% elsif company_signed_in? %>
+      <% if @user_ids.include?(@user.id) %>
+      <br>
+      <%= link_to "チャットへ", companyroom_path(current_company.companyrooms.find_by(user_id: @user.id)) %><br>
+    <% else %>
+        <%= form_for Companyroom.new do |f| %>
+        <%= f.hidden_field :user_id, :value => @user.id %>
+        <%= f.submit "チャット作成" %>
+      <% end %>
     <% end %>
+    <br>
   <% end %>
-  <br>
-<% end %>
+</div>

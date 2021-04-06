@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
   protected
     def configure_permitted_parameters
       if resource_class == User
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :skill, :image, :job, :birthday])
-        devise_parameter_sanitizer.permit(:account_update, keys: [:username, :skill, :image, :job, :birthday])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :skill, :image, :job, :birthday, :gender])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:username, :skill, :image, :job, :birthday, :gender])
       elsif resource_class == Company
         devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image, :industry, :required_person])
         devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image, :industry, :required_person])

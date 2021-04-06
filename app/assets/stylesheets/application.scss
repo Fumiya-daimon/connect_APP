@@ -1,4 +1,5 @@
 @import "bootstrap";
+
 @import "answers";
 @import "users";
 @import "posts";
@@ -9,6 +10,11 @@
 @import "home";
 @import "companies";
 @import "messages";
+@import "users/sign_up";
+@import "users/sign_in";
+@import "users/show";
+@import "users/edit";
+
 
 
 body {
@@ -34,7 +40,6 @@ header {
 }
 
 a {
-  color: white;
   font-family: 'Philosopher', serif;
 }
 .title-tag {

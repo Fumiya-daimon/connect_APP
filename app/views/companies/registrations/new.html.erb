@@ -1,49 +1,57 @@
-<h2>新規登録</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "companies/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="card-file">
+  <div class="card-header">
+    <h2>新規登録</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "companies/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :confirmpassword %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="form-group">
+        <%= f.label :companyname %>
+        <%= f.text_field :name, autofocus: true %>
+      </div>
 
-  <div class="field">
-    <%= f.label :companyname %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image, autofocus: true %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %>文字以上で表記してください。)</em>
+        <% end %>
+      </div>
 
-  <div class="field">
-    <%= f.label :industry %><br />
-    <%= f.select(:industry, ["自動車", "航空","建設機械","工作機械","ロボット","プラント・エンジニアリング","鉄道","電子部品","半導体","総合電機","パソコン","IT","インフラ","銀行","保険","証券","クレジットカード","食品","医薬品","ゲーム","旅行","エンタメ","広告","建設","不動産","商社","教育","飲食"], {include_blank: '選択ボックス'}) %>
-  </div>
+      <div class="form-group">
+        <%= f.label :confirmpassword %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :required_person %><br />
-    <%= f.select(:required_person, ["主体性", "課題解決能力","客観性","計画力","想像力","傾聴力"], {include_blank: '選択ボックス'}) %>
-  </div>
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :image, autofocus: true %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "登録" %>
-  </div>
-<% end %>
+      <div class="form-group">
+        <%= f.label :industry %>
+        <%= f.select(:industry, ["自動車", "航空","建設機械","工作機械","ロボット","プラント・エンジニアリング","鉄道","電子部品","半導体","総合電機","パソコン","IT","インフラ","銀行","保険","証券","クレジットカード","食品","医薬品","ゲーム","旅行","エンタメ","広告","建設","不動産","商社","教育","飲食"], {include_blank: '選択ボックス'}) %>
+      </div>
 
-<%= render "companies/shared/links" %>
+      <div class="form-group">
+        <%= f.label :required_person %>
+        <%= f.select(:required_person, ["主体性", "課題解決能力","客観性","計画力","想像力","傾聴力"], {include_blank: '選択ボックス'}) %>
+      </div>
+
+      <div class="sign-up">
+        <%= f.submit "登録する", class: "btn btn-primary text-white" %>
+      </div>
+    <% end %>
+
+    <div class="mt-3">
+    <%= render "companies/shared/links" %>
+    </div>
+  </div>
+</div>

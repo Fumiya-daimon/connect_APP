@@ -13,7 +13,7 @@ class Companies::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # DELETE /resource/sign_out
+  # DELETE /resource/
   # def destroy
   #   super
   # end

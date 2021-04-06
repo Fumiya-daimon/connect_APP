@@ -1,58 +1,53 @@
-<h2>編集画面</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "companies/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="card-file">
+  <div class="card-header">
+    <h2>編集画面</h2>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "companies/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :editpassword %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+
+      <div class="form-group">
+        <%= f.label :companyname %>
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :editpassword %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %>文字以上で表記してください。)</em>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password %>
+        <%= f.password_field :current_password, autocomplete: "current-password" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :industry %>
+        <%= f.select(:industry, ["自動車", "航空","建設機械","工作機械","ロボット","プラント・エンジニアリング","鉄道","電子部品","半導体","総合電機","パソコン","IT","インフラ","銀行","保険","証券","クレジットカード","食品","医薬品","ゲーム","旅行","エンタメ","広告","建設","不動産","商社","教育","飲食"], {include_blank: '選択ボックス'}) %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :required_person %>
+        <%= f.select :required_person, ["主体性", "課題解決能力","客観性","計画力","想像力","傾聴力"], {include_blank: '選択ボックス'} %>
+      </div>
+
+      <div class="flex-box">
+        <div class="sign-up">
+          <%= f.submit "更新", class: "btn btn-primary text-white" %>
+        </div>
+      <% end %>
+        <%= button_to "削除ボタン", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-warning" %></p>
+        <%= link_to "元に戻す", :back, class:"btn btn-danger" %>
+      </div>
   </div>
-
-  <div class="field">
-    <%= f.label :current_password %><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :companyname %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-    <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image %>
-  </div>
-
-  <div class="field">
-    <%= f.label :industry %><br />
-    <%= f.select(:industry, [["鉄鋼"],["人材"]]) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :required_person %><br />
-    <%= f.text_field :required_person, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
-
-<h3>アカウント削除</h3>
-
-<%= button_to "削除ボタン", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "元に戻す", :back %>
+</div>

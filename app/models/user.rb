@@ -25,6 +25,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   mount_uploader :image, ImageUploader
+  enum gender: { man: 0, woman: 1 }
+
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
